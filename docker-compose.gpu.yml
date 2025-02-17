@@ -1,7 +1,7 @@
 version: "3.4"
 
 services:
-  whisper-asr-webservice-gpu:
+  whisper-asr-api:
     build:
       context: .
       dockerfile: Dockerfile.gpu
@@ -16,9 +16,3 @@ services:
       - ASR_MODEL=base
     ports:
       - "9000:9000"
-    volumes:
-      - ./app:/app/app
-      - cache-whisper:/root/.cache
-
-volumes:
-  cache-whisper:

@@ -1,17 +1,14 @@
 version: "3.4"
 
 services:
-  whisper-asr-webservice:
+  whisper-asr-api:
     build:
       context: .
       dockerfile: Dockerfile
     environment:
       - ASR_MODEL=base
+      - ASR_ENGINE=openai_whisper
+      - ASR_DEVICE=cpu
     ports:
-      - "9000:9000"
-    volumes:
-      - ./app:/app/app
-      - cache-whisper:/root/.cache
+      - "11401:9000"
 
-volumes:
-  cache-whisper:
