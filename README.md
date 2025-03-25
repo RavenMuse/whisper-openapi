@@ -46,6 +46,21 @@ docker run -d -p 9000:9000 \
   onerahmet/openai-whisper-asr-webservice:latest
 ```
 
+#### Test
+
+- Download english speech media sample
+```
+wget -O test.map3 https://www.cambridgeenglish.org/images/153149-movers-sample-listening-test-vol2.mp3
+```
+
+- Test Asr Api by media sample
+```
+curl http://172.25.0.2:9000/audio/transcriptions \
+  -H "Content-Type: multipart/form-data" \
+  -F 'file=@test.mp3' \
+  -F model="whisper-1"
+```
+
 ## Key Features
 
 - Multiple ASR engines support (OpenAI Whisper, Faster Whisper, WhisperX)
